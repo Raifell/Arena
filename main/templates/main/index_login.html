@@ -1,0 +1,13 @@
+{% extends 'main/layout_login.html' %}
+
+{% block content %}
+    <main class="top"></main>
+    <main class="bottom">
+        <form class="login" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit">
+            <a style="margin-top: 20px;" href="{% url 'register_page' %}">Register</a>
+        </form>
+    </main>
+{% endblock %}

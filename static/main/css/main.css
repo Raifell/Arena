@@ -1,0 +1,42 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: lightgoldenrodyellow;
+}
+.navi{
+    width: 80vw;
+    height: 8vh;
+    background: #1c1c1c;
+    border-radius: 0 0 24px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+}
+.navi img{
+    width: 100px;
+    border-radius: 120px;
+    border: 5px solid #1c1c1c;
+    position: absolute;
+    top: 0; left: 10px;
+}
+.navi ul{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+.navi ul a{
+    font-size: 20px;
+    text-decoration: none;
+}
+.content{
+    margin: 50px auto;
+    border-left: 1px solid #1c1c1c;
+    border-right: 1px solid #1c1c1c;
+    width: 80vw;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

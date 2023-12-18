@@ -1,0 +1,18 @@
+{% extends 'main/layout_login.html' %}
+
+{% block content %}
+    <main class="top"></main>
+    <main class="bottom">
+        <form class="register" method="post">
+            {% csrf_token %}
+            {% for f in form %}
+                <p style="display: flex; justify-content: space-between; gap: 20px;">{{ f.label }} {{ f }}</p>
+                {% if f.errors %}
+                    <p style="color: red;">{{ f.errors }}</p>
+                {% endif %}
+            {% endfor %}
+            <input type="submit" value="Submit">
+            <a style="margin-top: 20px;" href="{% url 'login_page' %}">Back</a>
+        </form>
+    </main>
+{% endblock %}
