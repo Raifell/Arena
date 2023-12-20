@@ -1,10 +1,16 @@
 {% extends 'main/layout_login.html' %}
+{% load static %}
 
 {% block content %}
     <main class="top"></main>
     <main class="bottom">
-        <form class="register" method="post">
+        <form class="register" method="post" enctype="multipart/form-data">
             {% csrf_token %}
+            {% if user.photo %}
+                <img src="{{ user.photo.url }}">
+            {% else %}
+                <img style="width: 5vw; height: 5vw; margin: 0 auto 20px;" src="{% static 'main/img/default.jpg' %}">
+            {% endif %}
             {% for f in form %}
                 <p style="display: flex; justify-content: space-between; gap: 20px;">{{ f.label }} {{ f }}</p>
                 {% if f.errors %}

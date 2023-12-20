@@ -1,0 +1,26 @@
+{% extends 'main/layout_main.html' %}
+{% load static %}
+
+{% block content %}
+    <form class="update" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="logo">
+            {% if user.photo %}
+                <img src="{{ user.photo.url }}">
+            {% else %}
+                <img src="{% static 'main/img/default.jpg' %}">
+            {% endif %}
+            {{ form.photo }}
+        </div>
+        <div class="data">
+            <p style="display: flex; justify-content: space-between; gap: 20px;">First name: {{ form.username }}</p>
+            <p style="display: flex; justify-content: space-between; gap: 20px;">First name: {{ form.first_name }}</p>
+            <p style="display: flex; justify-content: space-between; gap: 20px;">Last name: {{ form.last_name }}</p>
+            <p style="display: flex; justify-content: space-between; gap: 20px;">Email: {{ form.email }}</p>
+            <input type="submit" value="Update">
+            {% if form.errors %}
+                <p>{{ form.errors }}</p>
+            {% endif %}
+        </div>
+    </form>
+{% endblock %}

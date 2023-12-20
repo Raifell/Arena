@@ -23,7 +23,7 @@ body{
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: -50px;
+    top: -100px;
     border: 2px solid white;
 }
 .bottom .login{
@@ -31,8 +31,8 @@ body{
     min-width: 340px;
 }
 .bottom .register{
-    width: 22vw;
-    min-width: 340px;
+    width: 24vw;
+    min-width: 440px;
 }
 .bottom form p{
     display: flex;

@@ -12,15 +12,20 @@
 </head>
 <body>
     <section class="navi">
-        <ul style="margin-left: 70px;">
-            <li><a href="">Map</a></li>
+        <ul>
+            <li><a href="{% url 'main_page' %}">Map</a></li>
             <li><a href="">Character</a></li>
             <li><a href="">Inventory</a></li>
         </ul>
         <ul>
             <li><a href="{% url 'logout_page' %}">Out</a></li>
         </ul>
-        <img src="{% static 'main/img/user_logo.jpg' %}">
+        {% if user.photo %}
+            <a href="{% url 'update_page' user.slug %}"><img src="{{ user.photo.url }}"></a>
+        {% else %}
+            <a href="{% url 'update_page' user.slug %}"><img src="{% static 'main/img/default.jpg' %}"></a>
+        {% endif %}
+
     </section>
     <section class="content">
         {% block content %}{% endblock %}

@@ -4,7 +4,9 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView, DeleteView, UpdateView, DetailView, ListView
-from .forms import CreateUserForm
+from .forms import CreateUserForm, UpdateUserForm
+from .models import User
+from django.contrib.auth import get_user_model
 
 
 class MainPageView(TemplateView):
@@ -45,6 +47,30 @@ class RegisterPageView(CreateView):
         if request.user.is_authenticated:
             return redirect('main_page')
         return super().get(request, *args, **kwargs)
+
+
+class UpdatePageView(UpdateView):
+    model = get_user_model()
+    template_name = 'main/index_update.html'
+    form_class = UpdateUserForm
+    slug_url_kwarg = 'user_slug'
+    success_url = reverse_lazy('main_page')
+    extra_context = {
+        'title': 'Update',
+    }
+
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('login_page')
+        return super().get(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        print()
+        print(self.request.POST)
+        print()
+        return super().post(request, *args, **kwargs)
+
+
 
 
 def logout_view(request):
