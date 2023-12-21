@@ -64,14 +64,6 @@ class UpdatePageView(UpdateView):
             return redirect('login_page')
         return super().get(request, *args, **kwargs)
 
-    def post(self, request, *args, **kwargs):
-        print()
-        print(self.request.POST)
-        print()
-        return super().post(request, *args, **kwargs)
-
-
-
 
 def logout_view(request):
     logout(request)
